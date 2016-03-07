@@ -512,6 +512,18 @@ neutron.add_router_interface router.id, subnet.id
 
 ```
 
+### Object Storage (Swift)
+
+TO DO: Add doc
+
+### Orchestration (Heat)
+
+TO DO: Add doc
+
+### Metering (Ceilometer)
+
+TO DO: Add doc
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
