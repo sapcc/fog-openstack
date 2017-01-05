@@ -60,6 +60,9 @@ module Fog
       request :update_snapshot
       request :delete_snapshot
 
+      # availability zones
+      request :list_availability_zones
+
       # rubocop:disable LineLength, Metrics/MethodLength, Metrics/ClassLength, Metrics/AbcSize
       class Mock
         def self.data
@@ -179,6 +182,14 @@ module Fog
                   "name"  => "snapshot_My_share"
                 }
               ],
+              :availability_zones => [
+                  {
+                      "name": "nova",
+                      "created_at": "2015-09-18T09:50:55.000000",
+                      "updated_at": null,
+                      "id": "388c983d-258e-4a0e-b1ba-10da37d766db"
+                  }
+              ],
               :snapshots_detail      => [
                 {
                   "status"      => "available",
@@ -218,7 +229,7 @@ module Fog
                   "preferred"         => false
                 }
               ],
-                 
+
               :access_rules          => [
                 {
                   "share_id"     => "406ea93b-32e9-4907-a117-148b3945749f",
