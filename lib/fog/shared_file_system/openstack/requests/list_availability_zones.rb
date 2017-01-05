@@ -6,7 +6,7 @@ module Fog
           request(
             :expects => 200,
             :method  => 'GET',
-            :path    => 'availability-zones'
+            :path    => microversion_newer_than?('2.6') ? 'availability-zones' : 'os-availability-zone'
           )
         end
       end
