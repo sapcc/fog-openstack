@@ -14,7 +14,7 @@ module Fog
             :body    => Fog::JSON.encode(data),
             :expects => [200],
             :method  => 'PUT',
-            :path    => "lbaas/l7policies/#{l7_policy_id}/rules/#{l7rule_id}"
+            :path    => "lbaas/l7policies/#{l7policy_id}/rules/#{l7rule_id}"
           )
         end
       end
