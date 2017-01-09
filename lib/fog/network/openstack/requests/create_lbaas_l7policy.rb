@@ -10,7 +10,7 @@ module Fog
             }
           }
 
-          vanilla_options = [:tenant_id, :name, :description, :redirect_pool, :redirect_url, :position]
+          vanilla_options = [:tenant_id, :name, :description, :redirect_pool_id, :redirect_url, :position]
           vanilla_options.reject { |o| options[o].nil? }.each do |key|
             data['l7policy'][key] = options[key]
           end
@@ -36,7 +36,7 @@ module Fog
             'tenant_id'       => options[:tenant_id],
             'name'            => options[:name],
             'description'     => options[:description],
-            'redirect_pool'   => options[:redirect_pool],
+            'redirect_pool_id'   => options[:redirect_pool_id],
             'redirect_url'    => options[:redirect_url]
           }
 
