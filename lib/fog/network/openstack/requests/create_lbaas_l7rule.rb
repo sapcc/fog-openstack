@@ -12,7 +12,7 @@ module Fog
             }
           }
 
-          vanilla_options = [:tenant_id, :key, :invert_compare]
+          vanilla_options = [:tenant_id, :key, :invert]
           vanilla_options.reject { |o| options[o].nil? }.each do |key|
             data['rule'][key] = options[key]
           end
@@ -37,7 +37,7 @@ module Fog
             'value'           => value,
             'tenant_id'       => options[:tenant_id],
             'key'             => options[:key],
-            'invert_compare'  => options[:invert_compare],
+            'invert'          => options[:invert],
             'l7policy_id'     => l7policy_id
           }
 

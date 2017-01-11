@@ -5,7 +5,7 @@ module Fog
         def update_lbaas_l7rule(l7policy_id, l7rule_id, options = {})
           data = { 'rule' => {} }
 
-          vanilla_options = [:type, :compare_type, :key, :value, :invert_compare]
+          vanilla_options = [:type, :compare_type, :key, :value, :invert]
           vanilla_options.reject { |o| options[o].nil? }.each do |key|
             data['rule'][key] = options[key]
           end
@@ -27,7 +27,7 @@ module Fog
             l7rule['compare_type']   = options[:compare_type]
             l7rule['key']            = options[:key]
             l7rule['value']          = options[:value]
-            l7rule['invert_compare'] = options[:invert_compare]
+            l7rule['invert']         = options[:invert]
             response.body = {'rule' => l7rule}
             response.status = 200
             response
