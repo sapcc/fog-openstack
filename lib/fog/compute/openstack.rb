@@ -149,6 +149,10 @@ module Fog
 
       # Hypervisor
       request :get_hypervisor_statistics
+      request :get_hypervisor
+      request :list_hypervisors
+      request :list_hypervisors_detail
+      request :list_hypervisor_servers
 
       # Metadata
       request :list_metadata
