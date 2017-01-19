@@ -3,10 +3,11 @@ module Fog
     class OpenStack
       class Real
         def update_lbaas_l7rule(l7policy_id, l7rule_id, options = {})
+
           data = { 'rule' => {} }
 
           vanilla_options = [:type, :compare_type, :key, :value, :invert]
-          vanilla_options.reject { |o| options[o].nil? }.each do |key|
+          vanilla_options.select { |o| options.key?(o) }.each do |key|
             data['rule'][key] = options[key]
           end
 

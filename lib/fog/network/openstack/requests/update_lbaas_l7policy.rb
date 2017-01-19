@@ -7,7 +7,7 @@ module Fog
           data = {'l7policy' => {}}
 
           vanilla_options = [:action, :name, :description, :redirect_pool_id, :redirect_url, :position]
-          vanilla_options.reject { |o| options[o].nil? }.each do |key|
+          vanilla_options.select { |o| options.key?(o) }.each do |key|
             data['l7policy'][key] = options[key]
           end
 
