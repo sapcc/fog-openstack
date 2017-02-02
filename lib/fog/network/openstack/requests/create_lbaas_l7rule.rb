@@ -5,7 +5,6 @@ module Fog
         def create_lbaas_l7rule(l7policy_id, type, compare_type, value, options = {})
           data = {
             'rule' => {
-              'l7policy_id'   => l7policy_id,
               'type'          => type,
               'compare_type'  => compare_type,
               'value'         => value
