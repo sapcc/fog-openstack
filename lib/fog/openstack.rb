@@ -679,7 +679,7 @@ module Fog
 
     def self.extract_version_from_body(body, supported_versions)
       return nil if body['versions'].empty?
-      versions = get_version_values(body['versions'])
+      versions = body['versions'].kind_of?(Array) ? body['versions'] : body['versions']['values']
       version = nil
       # order is important, preffered status should be first
       %w(CURRENT stable SUPPORTED DEPRECATED).each do |status|
@@ -688,10 +688,6 @@ module Fog
       end
 
       version
-    end
-
-    def self.get_version_values(versions)
-      versions.kind_of?(Array) ? versions : versions['values']
     end
 
     def self.version_raise(supported_versions)
