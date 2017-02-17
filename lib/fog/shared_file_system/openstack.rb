@@ -252,6 +252,7 @@ module Fog
                 "gigabytes"          => 1000,
                 "shares"             => 50,
                 "snapshot_gigabytes" => 1000,
+                "snapshots"          => 50,
                 "share_networks"     => 10,
                 "id"                 => "16e1ab15c35a457e9c2b2aa189f544e1"
               }

@@ -12,10 +12,12 @@ module Fog
       end
 
       class Mock
-        def get_quota(_project_id = nil)
+        def get_quota(project_id)
           response = Excon::Response.new
           response.status = 200
-          response.body = {'quota_set' => data[:quota_updated] || data[:quota]}
+          quota_data = data[:quota_updated] || data[:quota]
+          quota_data['id'] = project_id
+          response.body = {'quota_set' => quota_data}
           response
         end
       end

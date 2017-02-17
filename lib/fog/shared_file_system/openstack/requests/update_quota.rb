@@ -13,10 +13,11 @@ module Fog
       end
 
       class Mock
-        def update_quota(_project_id, options = {})
+        def update_quota(project_id, options = {})
           # stringify keys
           options = Hash[options.map { |k, v| [k.to_s, v] }]
           data[:quota_updated] = data[:quota].merge(options)
+          data[:quota_updated]['id'] = project_id
 
           response = Excon::Response.new
           response.status = 200
