@@ -14,6 +14,7 @@ module Fog
         #   * 'ethertype'<~String> - Type of ethernet support, must be in ['IPv4', 'IPv6']
         #   * 'remote_group_id'<~String> - UUID of the remote security group
         #   * 'remote_ip_prefix'<~String> - IP cidr range address i.e. '0.0.0.0/0'
+        #   * 'description'<~String> - A human-readable description for the resource. Default is an empty string.
         #   * 'tenant_id'<~String> - TenantId different than the current user, that should own the security group. Only allowed if user has 'admin' role.
         #
         # ==== Returns
@@ -29,6 +30,7 @@ module Fog
         #     * 'security_group_id'<~String> - UUID of the parent security group
         #     * 'remote_group_id'<~String> - UUID of the source security group
         #     * 'remote_ip_prefix'<~String> - IP cidr range address i.e. '0.0.0.0/0'
+        #     * 'description'<~String> - A human-readable description for the resource
         #     * 'tenant_id'<~String> - Tenant id that owns the security group rule
         def create_security_group_rule(security_group_id, direction, options = {})
           data            = {"security_group_rule" => {"security_group_id" => security_group_id, "direction" => direction}}
@@ -39,6 +41,7 @@ module Fog
             :ethertype,
             :remote_group_id,
             :remote_ip_prefix,
+            :description,
             :tenant_id
           ]
           selected_options = desired_options.select { |o| options[o] }
@@ -61,6 +64,7 @@ module Fog
             "remote_group_id"   => options[:remote_group_id],
             "direction"         => direction,
             "remote_ip_prefix"  => options[:remote_ip_prefix],
+            "description"       => options[:description],
             "protocol"          => options[:protocol],
             "ethertype"         => options[:ethertype] || "IPv4",
             "tenant_id"         => options[:tenant_id] || Fog::Mock.random_numbers(14).to_s,

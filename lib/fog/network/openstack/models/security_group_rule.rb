@@ -14,6 +14,7 @@ module Fog
         attribute :remote_ip_prefix
         attribute :ethertype
         attribute :remote_group_id
+        attribute :description
         attribute :tenant_id
 
         def destroy
