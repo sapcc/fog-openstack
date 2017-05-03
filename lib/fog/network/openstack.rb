@@ -155,12 +155,13 @@ module Fog
       # LBaaS V2
       #
 
-      # LBaaS V2 Loadbanacer
+      # LBaaS V2 Loadbalancer
       request :list_lbaas_loadbalancers
       request :create_lbaas_loadbalancer
       request :delete_lbaas_loadbalancer
       request :get_lbaas_loadbalancer
       request :update_lbaas_loadbalancer
+      request :get_lbaas_loadbalancer_statuses
 
       # LBaaS V2 Listener
       request :list_lbaas_listeners
