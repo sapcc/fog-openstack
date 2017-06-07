@@ -9,7 +9,7 @@ module Fog
           }
 
           vanilla_options = [
-            :description, :dns_ip, :user, :password, :domain, :server
+            :description, :dns_ip, :user, :password, :domain, :server, :ou
           ]
 
           vanilla_options.select { |o| options[o] }.each do |key|
