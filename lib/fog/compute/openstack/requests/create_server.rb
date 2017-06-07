@@ -45,7 +45,8 @@ module Fog
           if options['nics']
             data['server']['networks'] =
               Array(options['nics']).map do |nic|
-                neti = {'uuid' => (nic['net_id'] || nic[:net_id])}
+                neti = {}
+                neti['uuid'] = (nic['net_id'] || nic[:net_id]) unless (nic['net_id'] || nic[:net_id]).nil?
                 neti['fixed_ip'] = (nic['v4_fixed_ip'] || nic[:v4_fixed_ip]) unless (nic['v4_fixed_ip'] || nic[:v4_fixed_ip]).nil?
                 neti['port'] = (nic['port_id'] || nic[:port_id]) unless (nic['port_id'] || nic[:port_id]).nil?
                 neti
@@ -59,8 +60,8 @@ module Fog
           if (block_device_mapping = options['block_device_mapping_v2'])
             data['server']['block_device_mapping_v2'] = [block_device_mapping].flatten.collect do |mapping|
               entered_block_device_mapping = {}
-              [:boot_index, :delete_on_termination, :destination_type, :device_name, :source_type, :uuid,
-               :volume_size].each do |index|
+              [:boot_index, :delete_on_termination, :destination_type, :device_name, :device_type, :disk_bus,
+               :guest_format, :source_type, :uuid, :volume_size].each do |index|
                 entered_block_device_mapping[index.to_s] = mapping[index] if mapping.key?(index)
               end
               entered_block_device_mapping
@@ -167,9 +168,6 @@ module Fog
             data[:server_security_group_map][server_id] = groups
             response_data['security_groups'] = groups
           end
-
-          data[:last_modified][:servers][server_id] = Time.now
-          data[:servers][server_id] = mock_data
 
           if options['os:scheduler_hints'] && options['os:scheduler_hints']['group']
             group = data[:server_groups][options['os:scheduler_hints']['group']]

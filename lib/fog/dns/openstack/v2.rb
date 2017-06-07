@@ -23,6 +23,12 @@ module Fog
         collection  :zones
         model       :recordset
         collection  :recordsets
+        model       :pool
+        collection  :pools
+        model       :zone_transfer_request
+        collection  :zone_transfer_requests
+        model       :zone_transfer_accept
+        collection  :zone_transfer_accepts
 
         model       :pool
         collection  :pools
