@@ -7,7 +7,7 @@ module Fog
           data = { 'listener' => {} }
 
           vanilla_options = [:name, :description, :connection_limit, :default_tls_container_ref, :sni_container_refs,
-                             :admin_state_up]
+                             :default_pool_id, :admin_state_up]
           vanilla_options.select { |o| options.key?(o) }.each do |key|
             data['listener'][key] = options[key]
           end
@@ -28,8 +28,9 @@ module Fog
             listener['name']                = options[:name]
             listener['description']         = options[:description]
             listener['connection_limit']    = options[:connection_limit]
-            listener['default_tls_container_ref']    = options[:default_tls_container_ref]
+            listener['default_tls_container_ref'] = options[:default_tls_container_ref]
             listener['sni_container_refs']  = options[:sni_container_refs]
+            listener['default_pool_id']     = options[:default_pool_id]
             listener['admin_state_up']      = options[:admin_state_up]
             response.body = {'listener' => listener}
             response.status = 200
