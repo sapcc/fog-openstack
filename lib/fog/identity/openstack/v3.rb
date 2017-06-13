@@ -8,7 +8,7 @@ module Fog
         recognizes :openstack_auth_token, :openstack_management_url, :persistent,
                    :openstack_service_type, :openstack_service_name, :openstack_tenant,
                    :openstack_endpoint_type, :openstack_region, :openstack_domain_id,
-                   :openstack_project_name, :openstack_domain_name,
+                   :openstack_project_name, :openstack_project_id, :openstack_domain_name,
                    :openstack_user_domain, :openstack_project_domain,
                    :openstack_user_domain_id, :openstack_project_domain_id,
                    :openstack_api_key, :openstack_current_user_id, :openstack_userid, :openstack_username,
