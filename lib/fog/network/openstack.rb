@@ -104,6 +104,7 @@ module Fog
       request :create_floating_ip
       request :delete_floating_ip
       request :get_floating_ip
+      request :update_floating_ip
       request :associate_floating_ip
       request :disassociate_floating_ip
 
@@ -265,10 +266,11 @@ module Fog
       class Mock
         def self.data
           @data ||= Hash.new do |hash, key|
-            qos_policy_id = Fog::UUID.uuid
-            network_id   = Fog::UUID.uuid
-            extension_id = Fog::UUID.uuid
-            subnet_id    = Fog::UUID.uuid
+            qos_policy_id  = Fog::UUID.uuid
+            network_id     = Fog::UUID.uuid
+            extension_id   = Fog::UUID.uuid
+            subnet_id      = Fog::UUID.uuid
+            floating_ip_id = Fog::UUID.uuid
             tenant_id    = Fog::Mock.random_hex(8)
 
             hash[key] = {
@@ -326,7 +328,23 @@ module Fog
                 }
               },
               :subnet_pools           => {},
-              :floating_ips           => {},
+              :floating_ips           => {
+                floating_ip_id => {
+                  'floating_network_id' => network_id,
+                  'router_id'           => 'd23abc8d-2991-4a55-ba98-2aaea84cc72f',
+                  'fixed_ip_address'    => '10.0.0.3',
+                  'floating_ip_address' => '172.24.4.228',
+                  'project_id'          => tenant_id,
+                  'tenant_id'           => tenant_id,
+                  'status'              => 'ACTIVE',
+                  'port_id'             => 'ce705c24-c1ef-408a-bda3-7bbd946164ab',
+                  'id'                  => floating_ip_id,
+                  'description'         => 'floating ip for testing',
+                  'created_at'          => '2016-12-21T01:36:04Z',
+                  'updated_at'          => '2016-12-21T01:36:04Z',
+                  'revision_number'     => 1
+                }
+              },
               :routers                => {},
               :lb_pools               => {},
               :lb_members             => {},
