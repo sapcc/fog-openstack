@@ -3,6 +3,7 @@
 module Fog
   module Compute
     class OpenStack < Fog::Service
+      SUPPORTED_MICROVERSION = '2.9'.freeze
       requires :openstack_auth_url
       recognizes :openstack_auth_token, :openstack_management_url,
                  :persistent, :openstack_service_type, :openstack_service_name,
