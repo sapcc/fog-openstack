@@ -163,6 +163,7 @@ module Fog
       request :get_lbaas_loadbalancer
       request :update_lbaas_loadbalancer
       request :get_lbaas_loadbalancer_statuses
+      request :get_lbaas_loadbalancer_hosting_agent
 
       # LBaaS V2 Listener
       request :list_lbaas_listeners

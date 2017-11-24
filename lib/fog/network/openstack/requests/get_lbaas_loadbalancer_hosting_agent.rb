@@ -14,15 +14,9 @@ module Fog
       class Mock
         def get_lbaas_loadbalancer_hosting_agent(loadbalancer_id)
           response = Excon::Response.new
-=begin
-          if data = self.data[:lbaas_loadbalancer][loadbalancer_id]
-            response.status = 200
-            response.body = {'loadbalancer' => data[:lbaas_loadbalancer]}
-            response
-          else
-            raise Fog::Network::OpenStack::NotFound
-          end
-=end
+          response.status = 200
+          response.body = {'agent' => {'host' => 'testhost'}}
+          return response
         end
       end
     end
